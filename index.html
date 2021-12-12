@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css"  type="text/css">
+  <title>MBTI 나에게 어울리는 학과는? - 원광보건대학교</title>
+</head>
+
+<body class="container">
+	<header id="header">
+		<a href="/" id="home" title="홈으로 바로가기"><i class="fas fa-home"></i></a>
+		<a href="sub/detail_all.html" id="mbti_all" target="_self" class="btn btn-warning btn-sm">MBTI 전체 보기</a>
+		<span id="mobile_menu_open">
+			<i class="fa fa-bars" aria-hidden="true"></i>
+			<span class="sound_only">전체메뉴열기</span>
+		</span>
+	</header>
+	
+	
+	<!-- 메인 화면 시작 -->
+  <article class="main">
+    <h3 class="main__title">MBTI 나에게 어울리는 <span class="dis_block">학과는?</span></h3>
+		
+		<img class="main__character text-center mt-3" src="img/img_medlab.png" alt="원광보건대학교 임상병리과 캐릭터" />
+    <button type="button" class="main__button btn btn-danger mt-5" onclick="test_start();">시작하기</button>
+		<small class="main__detail text-center mt-3">		
+			16가지 유형에 따라 나에게 어울리는 학과 선택에 도움을 받을 수 있습니다.<br>
+			이 테스트는 편의를 위해 간소화시킨 내용이므로 정확도가 떨어질 수 있습니다.<br>
+			단, 현실에서는 케바케이므로 너무 맹신하지는 말 것! 재미로 해보세요.		
+		</small>
+    
+		<img class="main__logo" src="img/logo.png" alt="원광보건대학교">
+  </article>
+	<!-- 메인 화면 끝 -->
+		
+
+	<!-- 문제 화면 시작 -->
+  <article class="question">
+
+    <h3 id="title" class="text-center mt-5">문제</h3>
+    <input id="type" value="EI" type="hidden">
+    <button id="A" type="button" class="btn mt-5"></button>
+    <button id="B" type="button" class="btn mt-3"></button>
+
+    <div class="progress mt-5">
+      <div class="question__progress__bar" role="progressbar" style="width:calc(100/20*1%);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+		<p id="q_count" class="mt-2" style="text-align:center;color:#333;">1/20</p>
+  </article>	
+	<!-- 문제 화면 끝 -->
+	
+	
+	<!-- 로딩 -->
+	<div class="loader">
+		<div class="loader__wrap">
+				<div class="loader__wrap__character"></div>
+		</div>
+	</div>
+	<!-- 로딩 끝 -->	
+	
+	
+	<!-- 결과 시작 -->
+  <article class="result">
+		<h1 id="mymbti">나의 mbti</h1>
+		<h4 id="mymbtiex">나의 mbti설명</h4>
+		<img id="img" src="img/img_medlab.png" alt="학과캐릭터">
+		<h3 id="hack">나의 학과</h3>
+		<h6 id="explain">나의 학과 설명</h6>
+		<a id="detail" href="" target="_self" class="btn btn-warning link2">자세한 내용 보기 <i class="fas fa-angle-right"></i></a>
+		
+    <div>
+      <a href="https://www.wu.ac.kr/wu/12021/subview.do" target="_blank" class="btn btn-danger link" title="">원광보건대학교 진로체험 신청하기</a>
+      <a href="https://www.wu.ac.kr/wu/1411/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGd3UlMkYxMTElMkY5ODA0NiUyRmFydGNsVmlldy5kbyUzRnBhZ2UlM0QxJTI2c3JjaENvbHVtbiUzRCUyNnNyY2hXcmQlM0QlMjZiYnNDbFNlcSUzRCUyNmJic09wZW5XcmRTZXElM0QlMjZyZ3NCZ25kZVN0ciUzRCUyNnJnc0VuZGRlU3RyJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNlJTI2cGFzc3dvcmQlM0QlMjY%3D" target="_blank" class="btn btn-danger link" title="">2022학년도 입학전형 안내</a>
+		</div>				
+	
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<div class="share addthis_inline_share_toolbox_magv"></div>
+	</article>
+	<!-- 결과 끝 -->
+	
+	
+	<div class="close_menu" style="right: -30px;"><i class="fa fa-times" id="mobile_menu_close"></i></div>
+	<div id="aside">
+		<h3>원광보건대학교</h3>
+		<div class="mobile_menu">
+			<ul id="ul_1">
+				<li class="li_1">
+					<a href="#none" class="li1_a">입학안내</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1411/subview.do/" title="">공지사항</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1412/subview.do/" title="">입학자료신청</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1415/subview.do/" title="">Q&amp;A</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1417/subview.do/" title="">입학설명회신청</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/12021/subview.do/" title="">진로체험신청</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">ALL ABOUT 해피캠퍼스</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1291/subview.do/" title="">L-T-M 교육시스</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1290/subview.do/" title="">장학 프로그램ㆍ국고수주 현황</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1289/subview.do/" title="">취ㆍ창업 지원 프로그램</a></li>
+						<li class="li_2"><a href="https://www.wu.ac.kr/wu/1292/subview.do/" title="">글로벌 인재양성 프로그램</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">보건의료학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://medlab.wu.ac.kr/" title="">임상병리과</a></li>
+						<li class="li_2"><a href="https://wkpt.wu.ac.kr/" title="">물리치료과</a></li>
+						<li class="li_2"><a href="https://rad.wu.ac.kr/" title="">방사선과</a></li>
+						<li class="li_2"><a href="https://dental.wu.ac.kr/" title="">치위생과</a></li>
+						<li class="li_2"><a href="https://ddlt.wu.ac.kr/" title="">치기공과</a></li>
+						<li class="li_2"><a href="https://optics.wu.ac.kr/" title="">안경광학과</a></li>
+						<li class="li_2"><a href="https://mra.wu.ac.kr/" title="">의무행정과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">복지교육학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://welfare.wu.ac.kr/" title="" target="_blank">사회복지과</a></li>
+						<li class="li_2"><a href="https://child.wu.ac.kr/" title="" target="_blank">유아교육과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">간호학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://nursing.wu.ac.kr/" title="" target="_blank">간호학과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">식품클러스터학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://food.wu.ac.kr/" title="" target="_blank">식품영양과</a></li>
+						<li class="li_2"><a href="https://culinary.wu.ac.kr/" title="" target="_blank">외식조리학과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">글로벌호텔관광학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://hotour.wu.ac.kr/" title="" target="_blank">글로벌호텔관광과</a></li>
+						<li class="li_2"><a href="https://flight.wu.ac.kr/" title="" target="_blank">글로벌항공서비스과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">뷰티디자인학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://beauty.wu.ac.kr/" title="" target="_blank">미용피부화장품과</a></li>
+						<li class="li_2"><a href="https://jd.wu.ac.kr/" title="" target="_blank">3D제품디자인과</a></li>
+					</ul>
+				</li>
+				<li class="li_1">
+					<a href="#none" class="li1_a">군사학부</a><i class="fa fa-angle-down btn_ul2"></i>
+					<ul class="ul_2">
+						<li class="li_2"><a href="https://mil.wu.ac.kr/" title="" target="_blank">의무부사관과</a></li>
+						<li class="li_2"><a href="https://combat.wu.ac.kr/" title="" target="_blank">전투부사관과</a></li>
+					</ul>
+				</li>
+			</ul>			
+		</div>
+	</div>
+
+	
+  <input id="EI" value="0" type="hidden">
+  <input id="SN" value="0" type="hidden">
+  <input id="TF" value="0" type="hidden">
+  <input id="JP" value="0" type="hidden">
+	
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-609897d7ec62f6e0"></script>
+	
+  <script>    
+    //테스트 시작하기 버튼
+    function test_start() {
+      $(".main").hide();
+      $(".question").show();
+      next();
+    }
+
+		// type A 클릭 이벤트
+    $("#A").click(function(){
+      var type = $("#type").val();      //#type의 value를 변수 type에 저장
+      var preValue = $("#"+type).val(); //#type의 value를 변수 preValue에 저장
+      $("#"+type).val(parseInt(preValue)+1); // #type의 value를 +1한다. 위의 변수가 문자열이라 parseInt(문자를 숫자로 변환)로 감싼 후 +1;
+      next(); // 점수 증가 후 다음 문제로 이동
+    });
+
+		// type B 클릭 이벤트
+    $("#B").click(function(){   
+      next(); //버튼 B를 클릭했을 때는 점수증가가 필요없기 때문에 next() 함수만 실행
+    });
+
+    //mbti 문제
+    var num = 1;
+    var q = {
+      1 : {"title":"평소 어떻게 에너지를 얻는가?",
+					 "type":"EI", 
+					 "A":"외부활동과 사교활동을 통해 에너지를 얻는다.",
+					 "B":"혼자 시간을 보내며 지친 몸과 마음에 힐링을 준다."
+					},
+			
+      2 : {"title":"외면/내면 세계 중 어디에 집중하는편인가?", 
+					 "type":"EI", 
+					 "A":"눈으로 보여지는 외부 세계에 집중하는 편이다.", 
+					 "B":"내면의 세계에 집중하는 편이다."
+					},
+			
+      3 : {"title":"말 할 때 어떻게 행동하는가?", 
+					 "type":"EI", 
+					 "A":"먼저 말하고 나중에 생각하는 경향이 있다.", 
+					 "B":"생각한 후에 나중에 말을 아껴서 하는 편이다."
+					},
+			
+      4 : {"title":"나의 행동력은 어떤편인가?", 
+					 "type":"EI", 
+					 "A":"행동이 빠르고 매사 추진력이 넘치는 편이다.", 
+					 "B":"행동이 느리고 심사숙고 후에 행동으로 옮기는 편이다."
+					},
+			
+      5 : {"title":"대인 관계는 어떤편인가?", 
+					 "type":"EI", 
+					 "A":"다양한 친구들을 두루두루 만나는 편이다.", 
+					 "B":"소수의 친구들과 깊은 관계를 갖는 편이다."
+					},
+			
+      6 : {"title":"현실과 미래 중 나의 초점은?", 
+					 "type":"SN", 
+					 "A":"당장 눈앞에 보이는 현실을 중시하는 편이다.", 
+					 "B":"미래의 가치에 좀더 초점을 맞추는 편이다."
+					},
+			
+      7 : {"title":"나는 규칙적인 사람인가?", 
+					 "type":"SN", 
+					 "A":"정확하고 규정을 중시하는 경향이 있다.", 
+					 "B":"정해진 규칙없이 새로운 시도를 해보는 것을 선호한다."
+					},
+			
+      8 : {"title":"주로 사용하는 용어는?", 
+					 "type":"SN", 
+					 "A":"구체적인 용어들을 사용하는 것을 선호한다.", 
+					 "B":"추상적인 용어들을 사용하는 것을 선호한다."
+					},
+			
+      9 : {"title":"나는 여행을 갈 때 00하는 편이다?", 
+					 "type":"SN", 
+					 "A":"여행을 갈 때 세부적인 식당, 숙소, 여행코스에 집착한다.", 
+					 "B":"여행을 갈 때 바다, 술자리 등 큰 카테고리에 염두를 둔다."
+					},
+			
+      10 : {"title":"나는 실용적/이론적인 사람인가?", 
+						"type":"SN", 
+						"A":"실용적이고 효율적인 것에 관심을 둔다.", 
+						"B":"이론적이고 문학적인 것들에 관심을 둔다."
+					 },
+			
+      11 : {"title":"나는 논리적인 사람인가?", 
+						"type":"TF", 
+						"A":"논리를 기반으로 의사를 결정한다.", 
+						"B":"내 마음이 가는 데로 의사를 결정한다."
+					 },
+      12 : {"title":"세상은 과학을 중심으로 움직인다?", 
+						"type":"TF", 
+						"A":"세상은 과학적으로 설명되는 것이라고 생각한다.", 
+						"B":"세상은 마음으로 설명되는 것이라고 생각한다."
+					 },
+			
+      13 : {"title":"나는 규범을 잘 지키는 사람인가?", 
+						"type":"TF", 
+						"A":"적당한 규범에 통제되는 생활이 어울린다.", 
+						"B":"그때 그때 상황에 따라 행동하는 생활이 어울린다."
+					 },
+			
+      14 : {"title":"나는 공정한 사람인가?", 
+						"type":"TF", 
+						"A":"공정성을 중시하며 누구든 동일하게 대하려 한다.", 
+						"B":"동정심이나 친분에 따라 사람을 대하는 편이다."
+					 },
+			
+      15 : {"title":"나의 주된 관심사는?", 
+						"type":"TF", 
+						"A":"사물과 아이디어에 평소 관심이 많다.", 
+						"B":"사람들이 어떻게 생각하는지에 관심이 더 많다."
+					 },
+			
+      16 : {"title":"계획을 세울 때 어느 쪽인가?", 
+						"type":"JP", 
+						"A":"미리 계획을 세우고 지키는 것을 중요시한다.",
+						"B":"상황에 따라 유동적으로 대처하는 것을 중요시한다."
+					 },
+			
+      17 : {"title":"결정을 내릴 때까지 걸리는 시간은?", 
+						"type":"JP", 
+						"A":"결정을 빨리 내리고 그 결정으로 움직인다.", 
+						"B":"실행하기 직전까지도 다른 정보들을 계속해서 찾아본다."
+					 },
+			
+      18 : {"title":"조직생활에서 중요하다고 생각하는 것은?", 
+						"type":"JP", 
+						"A":"한 집단 내에서 조직 및 구조를 중요시하는 편이다.", 
+						"B":"한 집단 내에서 편안함과 캐주얼함을 중요시한다."
+					 },
+			
+      19 : {"title":"평소 약속에 대한 나의 기준은?", 
+						"type":"JP", 
+						"A":"약속시간에 내가 늦는 것도, 남이 늦는 것도 싫어한다.", 
+						"B":"약속시간은 얼마든지 변동성있는 것이라 생각한다."
+					 },
+			
+      20 : {"title":"프리젠테이션 발표 때 나는?", 
+						"type":"JP", 
+						"A":"발표할 때 미리 멘트나 예상질문을 정확히 짜둔다.", 
+						"B":"큰 흐름만 짜두고 나머지는 임기응변으로 대처한다."
+					 }
+    }
+
+    //mbti 결과
+    var result = {
+      "ISTJ" : {"img":"img/img_mra.png", 
+								"mymbti":"ISTJ",
+								"mymbtiex":"(세상의 소금형)",
+								"hack":"#의무행정과",  
+								"explain":"한번 시작한 일은 끝까지 해내는 성격, 신중하고 책임감있는 스타일이다. 다소 내향적인 기질도 있으나 조직을 중요시하고 사회에서 주어진 임무를 철저하게 완수하려 노력하는 성향이 있다. 반복되는 일상에 인내력이 강하고 정확하고 체계적으로 일하는 스타일이다. 맡은바를 충실히 해내면서도 홀로 튀어보이는 것은 좋아지지지않아 학교 교순님이나 직장 상사에게는 예쁨받는 사람일 가능성이 크다.",
+								"detail":"sub/detail_mra.html"},
+
+      "INTJ" : {"img":"img/img_wkpt.png", 
+								"mymbti":"INTJ",
+								"mymbtiex":"(진지한 과학자형)",
+								"hack":"#물리치료과", 
+								"explain":"전체를 조합해 비전을 제시하는 성격, 매사에 진지하고 분석적이며, 일관성 있게 정리된 체계를 설립하고 행하는 이들이다. 자신의 생각과 예측에 자신감이 넘치며 이 신념에 따라 모험도 마다하지 않는 성격이다. 논쟁이 벌어져도 감정적이기 보다는 논리적으로 갈등을 해결하려 한다. 매사에 적극적이고 용감한 편이기 때문에 의외로 이성들에게 인기가 좋은 성격이다.",
+								"detail":"sub/detail_wkpt.html"},
+
+      "ESTJ" : {"img":"img/img_medlab.png", 
+								"mymbti":"ESTJ",
+								"mymbtiex":"(엄격한 관리자형)",
+								"hack":"임상병리과", 
+								"explain":"사무적, 실용적, 현실적인 성격, 현실감각이 뛰어나고 체계적인 성격으로 조직을 이끌어 나간다. 적당한 카리스마와 책임감 있는 모습을 유지하는 전통적인 가장의 모습이라 할 수 있다. 기계 분야나 행정분야에 재능을 지녔으며, 일을 조직하고 계획하여 추진하는 데에는 최적화된 유형이라 할 수 있다. 주변 사람들에게 바른생활 이미지와 의리/배려도 보여주기 때문에 덕망이 많이 쌓이는 스타일이다.",
+								"detail":"sub/detail_medlab.html"},
+
+      "ENTJ" : {"img":"img/img_milcombat.png", 
+								"mymbti":"ENTJ",
+								"mymbtiex":"(대담한 지도자형)",
+								"hack":"#의무부사관과,#전투부사관과", 
+								"explain":"비전을 가지고 타인을 활력적으로 지도. 열정적이고 체계적인 리더상이다. 매사에 활동적이고 장기적인 플랜을 세우는 거시적 안목까지 지니고 있다. 지식에 대한 욕구와 관심이 많으며 새로운 아이디어를 갈망하는 스타일이다. 매사에 철두철미하고 이것저것 논리적으로 계산을 하는 데에도 능숙하며 한마디로 유능한 성격의 대표주자라고 할 수 있다. 거기에 사교성도 높아 거의 사기캐에 가까운 유형이라 할 수 있다.",
+								"detail":"sub/detail_milcombat.html"},
+
+      "ISFP" : {"img":"img/img_beauty.png", 
+								"mymbti":"ISFP",
+								"mymbtiex":"(따뜻한 성인군자형)",
+								"hack":"#미용피부화장품과", 
+								"explain":"호기심 많고 따뜻한 감성을 가진 겸손한 성격, 타인에 대한 배려와 자기 중z심적인 성향을 동시에 지닌 양면적인 성격이다. 말 없이 친절을 베푸는 것을 좋아하여 사회봉사 직종에도 어울리고, 예술가 기질도 지니고 있어 문학, 음악, 미술 등에 관심이 많다. 친해지기 전까지는 본인의 속을 쉽게 드러내지 않으며, 타인의 감정에 민감하여 의견충돌을 피하고 좋게 좋게 넘어가는 것을 중시한다.",
+								"detail":"sub/detail_beauty.html"},
+
+      "INFP" : {"img":"img/img_jd.png", 
+								"mymbti":"INFP",
+								"mymbtiex":"(열정적인 중간자형)",
+								"hack":"#3D제품디자인과", 
+								"explain":"이상적인 세상을 만들어가는 성격, 타인에게 관대하고 개방적이며, 굳이 남을 설득하거나 지배하려 하지 않는다. 사람마다 각자 개인의 세계가 있다고 생각하기 때문에 타인과 싸우는 일이 좀처럼 없다. 공상에 몰두하기를 좋아하며, 독창적인 호기심과 아이디어가 풍부하다. 본인이 직접 리더로 나서기보다는, 존경하는 인물 밑에서 서포터역할을 하는 것을 선호한다. 대의를 위해서는 희생도 마다하지 않는다.",
+								"detail":"sub/detail_jd.html"},
+
+      "ESFP" : {"img":"img/img_flight.png", 
+								"mymbti":"ESFP",
+								"mymbtiex":"(자유분방 연예인형)",
+								"hack":"#글로벌항공서비스과", 
+								"explain":"우호적이고 열정 넘치는 분위기 메이커, 타고난 사교성과 낙천적인 성격으로 활동적이며 수용력이 강하고 친절하다. 어떤 상황에서든 잘 적응하고 센스와 유머가 뛰어나 조직 내에서 밝고 재미있는 분위기를 조성한다. 주위 사람들을 잘 챙기고 현실적인 감각과 상식도 풍부한 편이다. 이런 성격 덕분에 연예인이나  MC들이 많은 유형이기도 하다.",
+								"detail":"sub/detail_flight.html"},
+
+      "ENFP" : {"img":"img/img_hotour.png", 
+								"mymbti":"ENFP",
+								"mymbtiex":"(재기발랄한 활동가형)",
+								"hack":"#글로벌호텔관광과", 
+								"explain":"열정적이고 사교적인 성격, 에너지가 넘치는 외향적 성격으로 주변 사람들에게 활력과 즐거움을 준다. 반복적인 일상 보다는 변화무쌍한 모험을 즐긴다. 본인이 하고 싶은 일이 있으면 여러개라도 열정적으로 벌려 놓고 보는 성격이다. 타인들에게 관심이 많고 사람들을 잘 통솔하며 뛰어난 상황 판단력으로 주변에 도움을 주는 성격이다.",
+								"detail":"sub/detail_hotour.html"},
+
+      "ISTP" : {"img":"img/img_optics.png", 
+								"mymbti":"ISTP ",
+								"mymbtiex":"(만능 재주꾼형)",
+								"hack":"#안경광학과", 
+								"explain":"논리적이고 뛰어난 상황적응력을 지닌 성격, 타고난 손재주와 호기심을 지닌 장인의 스타일이다. 묵묵하게 세상을 객관적으로 관찰하고 인과관계나 객관적 원리에 많은 관심을 보인다. 상황 적응력이 뛰어나 혼자도 잘 놀고 개인적인 시간을 중요시하는 경향이 있다. 본인이 가치있다고 생각하는 부분에만 에너지를 쏟으며, 섬세함을 요구하는 직업에 뛰어난 재능을 보인다.",
+								"detail":"sub/detail_optics.html"},
+
+      "INTP" : {"img":"img/img_food.png", 
+								"mymbti":"INFP",
+								"mymbtiex":"(논리적인 교수님형)",
+								"hack":"#식품영양과", 
+								"explain":"비평적인 관점을 지닌 뛰어난 학자의 성격, 매사 논리적이고 과학적으로 세상을 바라보기를 좋아한다. 조용하고 과묵한 편이지만 본인이 좋아하는 분야에 대해서는 말을 많이 한다. 이해력과 통찰력이 뛰어나며 어떤 문제를 해결하고 답을 찾는데 탁월한 재능을 지니고 있다. 어느 것 하나에 꽂히면 열정과 몰입감이 강한 스타일이다. 성격이 까다롭지 않고 상대방에게 양보하려 하는 미덕도 지니고 있다.",
+								"detail":"sub/detail_food.html"},
+
+      "ESTP" : {"img":"img/img_radddlt.png", 
+								"mymbti":"ESTP",
+								"mymbtiex":"(수완 좋은 활동가형)",
+								"hack":"#방사선과,#치기공과", 
+								"explain":"삶의 다양한 즐거움을 선호하는 자유로운 성격, 말보다는 행동으로 움직이는 스타일이다. 운동, 음식, 예술 등 오감으로 즐길 수 있는 것을 두루두루 좋아한다. 순발력과 기억력이 뛰어나고 연장이나 재료들을 다루는데 능숙하다. 현실감각이 뛰어나고 타협능력이나 문제해결 능력도 발군이다. 어디서든 적응을 잘 하고 리더십도 뛰어난 편이라 사업가 기질도 지니고 있다.",
+								"detail":"sub/detail_radddlt.html"},
+
+      "ENTP" : {"img":"img/img_culinary.png", 
+								"mymbti":"ENTP",
+								"mymbtiex":"(만능재주꾼 발명가형)",
+								"hack":"#외식조리과", 
+								"explain":"풍부한 상상력으로 끊임없이 도전하는 성격, 박식하고 다방면에 재능이 많다. 풍부한 상상력으로 새로운 것에 도전하는 능력이 뛰어나고, 탁월한 리더십에 안목도 넓은 편이기 때문에 그야말로 혁명가의 기질을 타고 났다고 볼 수 있다. 기존의 체제에 순응하지 않고 솔선수범하여 그것을 깨부수거나 혁신을 이루는 데 관심이 많다. 주변사람들이 어떠헥 살아가는지를 항상 주시하며 기민하게 흡수한다.",
+								"detail":"sub/detail_culinary.html"},
+
+      "ISFJ" : {"img":"img/img_dental.png", 
+								"mymbti":"ISFJ",
+								"mymbtiex":"(용감한 권력형)",
+								"hack":"#치위생과", 
+								"explain":"성실하고 온화하며 협조를 잘 하는 성격, 조용하고 차분하며 믿음직한 성격이다. 현실감각을 갖고 꼼꼼하고 협조적으로 일을 처리한다. 자신이 틀렸다고 생각할때까지 꾸준히 밀고 나가는 성격이며 항상 진솔하고 다정한 인간관계를 유지한다. 책임감과 인내심도 강한 편이라 사람들의 신뢰를 한 몸에 받는다.",
+								"detail":"sub/detail_dental.html"},
+
+      "INFJ" : {"img":"img/img_welfare.png", 
+								"mymbti":"INFJ",
+								"mymbtiex":"(선의의 옹호자, 예언자형)",
+								"hack":"#사회복지과", 
+								"explain":"뛰어난 통찰력을 지닌 성격, 내향적인 이상주의자의 성격이다. 인내심이 많고 통찰력과 직관력이 뛰어나며 화합을 추구한다. 독창성과 내적 독립심이 강해 확고한 신념과 열정으로 자신의 상상을 키워나간다. 단체 모임 보다는 1:1 만남을 선호하는 경향이 있다. 또한 평소에는 말이 없다가도 편한 친구 앞에서는 본인의 예측과 상상에 대해 말하기를 좋아한다.",
+								"detail":"sub/detail_welfare.html"},
+
+      "ESFJ" : {"img":"img/img_nursing.png", 
+								"mymbti":"ESFJ",
+								"mymbtiex":"(사교적인 외교관형)",
+								"hack":"#간호학과", 
+								"explain":"현실감을 갖고 타인에게 봉사하는 성격, 사회성이 풍부하고 정이 많아 사람들을 대하는 능력이 뛰어나다. 남을 돕기를 좋아하고 이야기하기를 즐기는 타고난 협력자 스타일이라 할 수 있다. 동료애가 깊고 인내력이 강하며 현실에 적응이 빠르기 때문에 사회성도 뛰어난 편이다. 사람들과 어울리는 교직, 성직, 간호/의료 분야에 이상적인 유형이다.",
+								"detail":"sub/detail_nursing.html"},
+
+      "ENFJ" : {"img":"img/img_child.png", 
+								"mymbti":"ENFJ",
+								"mymbtiex":"(정의의 운동가형)",
+								"hack":"#유아교육과", 
+								"explain":"능숙한 언변으로 타인의 성장을 돕는 성격, MBTI 16가지 유형 중 가장 부드럽게 말을 잘 하는 스타일이다. 따뜻하고 적극적이며 책임감이 강하고 사교성이 풍부하다. 이타적이고 인화를 중시하며 인내심도 강하다. 모임을 두려워하지 않으며 대화를 적극적으로 이끌어 나간다. 연민과 동정, 이해심이 많아 온화한 지도자로서의 면모도 지니고 있다.",
+								"detail":"sub/detail_child.html"}
+    }
+
+    //문제제목, 성격유형, A답, B답 넣기
+    function next() {
+      if(num == 21){ // num이 21이면 문제는 hide, 로딩바 실행 후 결과 show
+        $(".question").hide();
+				loding(); //
+        $(".result").show();				
+
+        var mbti = "";    
+        //mbti 최종 판단하는 함수 3항 연산자를 이용해서 값 구하기
+				//5문제 중 value값이 3이하면 왼쪽값, 3이상이면 오른쪽값이 mbti에 나옴
+        ($("#EI").val() < 3) ? mbti = mbti + "I" : mbti = mbti + "E";
+        ($("#SN").val() < 3) ? mbti = mbti + "N" : mbti = mbti + "S";
+        ($("#TF").val() < 3) ? mbti = mbti + "F" : mbti = mbti + "T";
+        ($("#JP").val() < 3) ? mbti = mbti + "P" : mbti = mbti + "J";
+				
+        // alert(mbti);
+        $("#mymbti").html(result[mbti]["mymbti"]);
+        $("#mymbtiex").html(result[mbti]["mymbtiex"]);
+        $("#img").attr("src",result[mbti]["img"]);
+        $("#hack").html(result[mbti]["hack"]); 
+        $("#explain").html(result[mbti]["explain"]);				
+        $("#detail").attr("href",result[mbti]["detail"]);
+        
+      } else { // 시작부터 문제 20번까지 문제 넘기기
+        $("#title").html(q[num]["title"]);
+        $("#type").val(q[num]["type"]);
+        $("#A").html(q[num]["A"]);
+        $("#B").html(q[num]["B"]);
+        $(".question__progress__bar").attr("style", "width:calc(100/20*"+num+"%)");
+				$("#q_count").html(num + "/20");
+        num++;
+      }
+    }
+		
+			function loding(){
+				$(".loader").show().delay('3000').fadeOut();
+			}
+			
+			$(".li1_a").click(function(){
+				if( $(this).parent().children("ul").is(':visible')) {
+					
+				} else {	//menu toggle
+					$(".btn_ul2").removeClass("on");
+					$(".ul_2").hide(200);
+					$(".li1_a").removeClass("on")
+				}
+				$(this).nextAll(".btn_ul2").toggleClass("on");
+				$(this).nextAll(".ul_2").slideToggle(200);
+				$(this).toggleClass("on")
+			});
+
+			$(".btn_ul2").click(function(){		
+				$(this).parent().children("ul").slideToggle( 200 );			
+				$(this).toggleClass("on");
+			});
+
+			$("#mobile_menu_open").click(function(){
+				$("#aside").animate({right:"-7px"}, 200);
+				$(".close_menu").animate({right:"20px"}, 200);
+			});
+
+			$("#mobile_menu_close").click(function(){
+				$("#aside").animate({right:"-310px"}, 200);
+				$(".close_menu").animate({right:"-30px"}, 200);
+			});
+  </script>
+            
+	<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-609897d7ec62f6e0"></script>	
+</body>
+</html>
